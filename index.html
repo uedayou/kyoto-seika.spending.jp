@@ -1,6 +1,6 @@
 ---
 layout: default
-title: The Daily Bread
+title: 税金の使われ方
 ---
 
 <script>
@@ -10,13 +10,13 @@ yepnope({
     // 'http://wheredoesmymoneygo.org/wp-content/themes/wdmmg/wdmmg.css',
     'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/themes/ui-lightness/jquery-ui.css',
     'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js',
-    '/js/libs/base64.js',
-    '/js/libs/underscore.js',
-    '/js/libs/raphael-min.js',
-    '/js/aggregator.js',
-    '/css/dailybread.css',
-    '/js/setting.js?20120707',
-    '/js/dailybread.js?20120707'
+    './js/libs/base64.js',
+    './js/libs/underscore.js',
+    './js/libs/raphael-min.js',
+    './js/aggregator.js',
+    './css/dailybread.css',
+    './js/setting.js?20120707',
+    './js/dailybread.js?20120707'
   ],
   complete: function() {
 
@@ -34,7 +34,7 @@ yepnope({
            drilldowns: ['Category', 'Subcategory'],
            cuts: ['year:' + OpenSpending.year],
            rootNodeLabel: 'Total',
-           breakdown: 'Subcategory',
+           breakdown: 'Category',
            callback: function(data) {
 
             $('#content-wrap').show();
@@ -89,11 +89,16 @@ yepnope({
      </div>
 
      <div id="db-tax" class="layout-col layout-col-3">
-      <h2>あなたの横浜市税（年間）</h2>
+      <!-- <h2>あなたの横浜市税（年間）</h2> -->
+      <h2>あなたの精華町税（年間）</h2>
       <p>&yen;31.12</p>
      </div>
     </div><!-- /#db-topbar -->
   </div>
+  <!--
   あなたの市税は、1日当たり、どこで、いくら使われているか？
+  -->
+    あなたの町税は、1日当たり、どこで、いくら使われているか？
+
 </div><!-- /#dailybread -->
 
