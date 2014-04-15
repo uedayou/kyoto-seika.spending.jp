@@ -5,6 +5,7 @@ title: 税金の使われ方
 
 <script>
 
+
 yepnope({
   load: [
     // 'http://wheredoesmymoneygo.org/wp-content/themes/wdmmg/wdmmg.css',
@@ -15,6 +16,7 @@ yepnope({
     './js/libs/raphael-min.js',
     './js/aggregator.js',
     './css/dailybread.css',
+    './css/dailybread.seika.css',
     './js/setting.js?20120707',
     './js/dailybread.js?20120707'
   ],
@@ -26,7 +28,39 @@ yepnope({
 
         $('#preloader .txt').html('loading data');
 
-       var db = new OpenSpending.DailyBread($('#dailybread'));
+		var db = new OpenSpending.DailyBread($('#dailybread'));
+		
+		db.drawIcons = function(t) {
+			var color = '#00ba5d';
+			var iconRad = 35;
+			$('.db-area-icon svg', t).remove();
+			$('.db-area-icon', t).each(function(i,e) {
+				var iconUrl, paper;
+				iconUrl = $(e).data('svg-url');
+				paper = Raphael(e, iconRad+iconRad,iconRad+iconRad+5);
+				paper.circle(iconRad,iconRad,iconRad).attr({ fill: color, stroke: 'none' });
+				paper.circle(iconRad,iconRad,iconRad-2).attr({ fill: 'none', stroke: '#eee', opacity: .8, 'stroke-dasharray': '- ' });
+				$.get(iconUrl, function(svg) {
+					if (typeof(svg) == "string") {
+						svg = $(svg);
+						svg = svg[svg.length-1];
+					}
+					//if (!svg.getElementsByTagName) return;
+					try {
+						var j, icon,
+						joined='',
+						paths = svg.getElementsByTagName('path');
+						for (j=0;j<paths.length;j++) joined += paths[j].getAttribute('d')+' ';
+						icon = paper.path(joined);
+						icon.attr({ fill: 'white', stroke: 'none' });
+						icon.scale(iconRad/50, iconRad/50, 0, 0);
+					} catch (e) {
+						// failed to handle SVG
+					}
+				});
+			});
+		};
+       
        new OpenSpending.Aggregator({
            apiUrl: 'http://openspending.org/api',
            //localApiCache: 'aggregate.json',

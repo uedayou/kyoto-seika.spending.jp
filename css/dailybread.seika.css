@@ -1,0 +1,33 @@
+/*
+Where does my money go? 精華町版用 dailybread.css
+背景色等オーバーライド
+*/
+
+#db-header h1 {
+  color: #00ba5d;
+}
+
+#db-topbar div p {
+  color: #00ba5d;
+}
+
+.wdmmg-slider.ui-widget-content {
+  background-color: #00ba5d;
+}
+
+.db-area-col.active {
+  color: #00ba5d;
+}
+
+.db-area-col.active .db-area-icon path {
+  fill: #00ba5d;
+}
+
+#select-dependents-type > div.active {
+  color: #00ba5d;
+}
+
+#select-dependents-type > div.active path {
+  fill: #00ba5d;
+}
+
